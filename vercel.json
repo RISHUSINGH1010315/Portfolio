@@ -1,4 +1,12 @@
 {
-  "buildCommand": "npm run build:frontend",
-  "outputDirectory": "frontend/dist"
+  "experimentalServices": {
+    "frontend": {
+      "root": "frontend",
+      "routePrefix": "/"
+    },
+    "backend": {
+      "root": "backend",
+      "routePrefix": "/api"
+    }
+  }
 }
