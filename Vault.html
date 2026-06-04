@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NEURAL_OS v2.0 | Certification Vault &amp; Contact</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glow-sm { filter: drop-shadow(0 0 5px currentColor); }
+        .glow-md { filter: drop-shadow(0 0 10px currentColor); }
+        
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+        .pulse-node::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid currentColor;
+            border-radius: 50%;
+            animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .terminal-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 18px;
+            background-color: #00dbe7;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .neon-border {
+            position: relative;
+        }
+        .neon-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(45deg, #b0c6ff, #dfb7ff);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .scanline {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: rgba(176, 198, 255, 0.2);
+            opacity: 0;
+            pointer-events: none;
+        }
+        .btn-holographic:hover .scanline {
+            animation: scan 1.5s linear infinite;
+            opacity: 1;
+        }
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline-variant": "#424655",
+                      "tertiary-fixed-dim": "#00dbe7",
+                      "outline": "#8c90a1",
+                      "surface-bright": "#33394c",
+                      "on-surface-variant": "#c2c6d8",
+                      "surface": "#0c1324",
+                      "on-secondary": "#4b007e",
+                      "on-tertiary": "#00363a",
+                      "surface-variant": "#2e3447",
+                      "on-tertiary-fixed-variant": "#004f54",
+                      "on-error": "#690005",
+                      "on-tertiary-fixed": "#002022",
+                      "surface-container-lowest": "#070d1f",
+                      "inverse-surface": "#dce1fb",
+                      "primary-container": "#568dff",
+                      "background": "#0c1324",
+                      "on-secondary-fixed-variant": "#6b00b0",
+                      "inverse-on-surface": "#2a3043",
+                      "surface-container-high": "#23293c",
+                      "secondary-fixed-dim": "#dfb7ff",
+                      "on-surface": "#dce1fb",
+                      "on-primary": "#002d6f",
+                      "on-primary-fixed-variant": "#00429c",
+                      "secondary": "#dfb7ff",
+                      "primary-fixed-dim": "#b0c6ff",
+                      "secondary-container": "#9d05ff",
+                      "on-secondary-container": "#f7e6ff",
+                      "inverse-primary": "#0058cb",
+                      "tertiary": "#00dbe7",
+                      "tertiary-fixed": "#74f5ff",
+                      "on-error-container": "#ffdad6",
+                      "on-background": "#dce1fb",
+                      "primary": "#b0c6ff",
+                      "surface-container-low": "#151b2d",
+                      "surface-dim": "#0c1324",
+                      "surface-container-highest": "#2e3447",
+                      "error-container": "#93000a",
+                      "tertiary-container": "#00a0a9",
+                      "on-primary-container": "#002661",
+                      "secondary-fixed": "#f1daff",
+                      "on-primary-fixed": "#001945",
+                      "on-secondary-fixed": "#2d004f",
+                      "surface-container": "#191f31",
+                      "error": "#ffb4ab",
+                      "primary-fixed": "#d9e2ff",
+                      "surface-tint": "#b0c6ff",
+                      "on-tertiary-container": "#002f32"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "sm": "16px",
+                      "base": "4px",
+                      "xs": "8px",
+                      "md": "24px",
+                      "xl": "80px",
+                      "lg": "48px",
+                      "container-max": "1280px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Space Grotesk"],
+                      "terminal-sm": ["JetBrains Mono"],
+                      "body-lg": ["Inter"],
+                      "headline-lg": ["Space Grotesk"],
+                      "body-md": ["Inter"],
+                      "label-caps": ["JetBrains Mono"],
+                      "headline-lg-mobile": ["Space Grotesk"],
+                      "display-lg": ["Space Grotesk"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                      "terminal-sm": ["14px", {"lineHeight": "1.5", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl rounded-full border border-white/10 bg-surface/30 backdrop-blur-xl shadow-[0_0_20px_rgba(0,0,0,0.5)] z-50 flex justify-between items-center px-6 py-2">
+<div class="font-headline-md text-headline-md font-bold tracking-tighter text-primary drop-shadow-[0_0_8px_rgba(176,198,255,0.8)]">NEURAL_OS v2.0</div>
+<div class="hidden md:flex gap-8">
+<a class="font-terminal-sm text-terminal-sm text-on-surface-variant hover:text-primary transition-colors hover:bg-white/5 transition-all duration-300" href="#">COMMAND</a>
+<a class="font-terminal-sm text-terminal-sm text-on-surface-variant hover:text-primary transition-colors hover:bg-white/5 transition-all duration-300" href="#">LABS</a>
+<a class="font-terminal-sm text-terminal-sm text-on-surface-variant hover:text-primary transition-colors hover:bg-white/5 transition-all duration-300" href="#">GALAXY</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary scale-95 active:scale-90 cursor-pointer" data-icon="sensors">sensors</span>
+<span class="material-symbols-outlined text-primary scale-95 active:scale-90 cursor-pointer" data-icon="settings">settings</span>
+</div>
+</nav>
+<!-- SideNavBar (Hidden on Mobile) -->
+<aside class="fixed left-6 top-1/2 -translate-y-1/2 w-20 hover:w-64 transition-all duration-500 rounded-full border border-white/5 overflow-hidden bg-surface-container-low/40 backdrop-blur-2xl shadow-2xl shadow-primary/10 flex flex-col items-center py-8 z-40 group">
+<div class="flex flex-col items-center gap-2 mb-12 overflow-hidden">
+<div class="w-12 h-12 rounded-full border border-primary overflow-hidden">
+<img alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhSaf5w7qi0qSYIW2UKBMQgjeAWsyb3ke5vMaUvwe536JuWOlPEaMm5ZYVuxhwoSfcS3p8kM4q_zEOovZkQqdQKqoCX4AboGuvNeSE7DT1gS59zno4YE6PI7VsZSBdNAFfFYxCobW2FyZwgLLIZYCRzfrXdJXrVYX9F7EG2fJBXSoZ-or2aHQ94HQA-V5OavDFwAWVLlI1DXZOCxHLeAeWhKODYFadPdfQTbN_-i6-zudi3qhrQtjo8Qw6qwtqptw0HJQ-Z8tgQDE"/>
+</div>
+<span class="font-headline-md text-primary opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">RISHU.SYS</span>
+</div>
+<div class="flex flex-col gap-8 w-full px-4">
+<button class="flex items-center gap-4 text-on-surface-variant/60 hover:bg-white/10 p-2 rounded-lg transition-all group-hover:translate-x-1">
+<span class="material-symbols-outlined text-secondary" data-icon="terminal">terminal</span>
+<span class="font-label-caps text-label-caps opacity-0 group-hover:opacity-100 whitespace-nowrap">Command Center</span>
+</button>
+<button class="flex items-center gap-4 text-on-surface-variant/60 hover:bg-white/10 p-2 rounded-lg transition-all group-hover:translate-x-1">
+<span class="material-symbols-outlined text-secondary" data-icon="science">science</span>
+<span class="font-label-caps text-label-caps opacity-0 group-hover:opacity-100 whitespace-nowrap">ML Lab</span>
+</button>
+<button class="flex items-center gap-4 bg-secondary-container/20 text-secondary border-r-2 border-secondary p-2 rounded-lg transition-all group-hover:translate-x-1">
+<span class="material-symbols-outlined text-secondary" data-icon="hub">hub</span>
+<span class="font-label-caps text-label-caps opacity-0 group-hover:opacity-100 whitespace-nowrap">Skill Galaxy</span>
+</button>
+</div>
+<button class="mt-auto font-label-caps text-label-caps text-secondary opacity-0 group-hover:opacity-100 transition-opacity">INITIATE_CONTACT</button>
+</aside>
+<main class="pt-32 px-md md:px-lg max-w-7xl mx-auto space-y-xl pb-xl">
+<!-- Header -->
+<header class="text-center space-y-base relative">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-primary/10 blur-[100px] -z-10"></div>
+<h1 class="font-display-lg text-display-lg text-primary tracking-tighter glow-sm">VAULT_ACCESS</h1>
+<p class="font-terminal-sm text-terminal-sm text-tertiary-fixed-dim uppercase tracking-widest">Decrypted Credentials &amp; System Node Analytics</p>
+</header>
+<!-- Section 1: Certification Vault -->
+<section class="space-y-lg" id="vault">
+<div class="flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-tertiary pulse-node relative"></span>
+<h2 class="font-headline-lg text-headline-lg">CERTIFICATION_REGISTRY</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Cert Cards -->
+<div class="certification-card group relative p-md rounded-xl bg-surface-container-low/40 backdrop-blur-xl border border-white/5 hover:border-primary/50 transition-all duration-500 cursor-pointer overflow-hidden neon-border" onclick="toggleModal('modal-cert-1')">
+<div class="scanline"></div>
+<div class="flex justify-between items-start mb-base">
+<span class="material-symbols-outlined text-primary text-3xl glow-sm" data-icon="api">api</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant/40">NODE_0x1A</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-xs group-hover:text-primary transition-colors">Oracle OCI AI</h3>
+<p class="font-terminal-sm text-terminal-sm text-on-surface-variant/70">Expertise in generative AI &amp; cloud infrastructure orchestration.</p>
+</div>
+<div class="certification-card group relative p-md rounded-xl bg-surface-container-low/40 backdrop-blur-xl border border-white/5 hover:border-secondary/50 transition-all duration-500 cursor-pointer overflow-hidden neon-border" onclick="toggleModal('modal-cert-2')">
+<div class="scanline"></div>
+<div class="flex justify-between items-start mb-base">
+<span class="material-symbols-outlined text-secondary text-3xl glow-sm" data-icon="psychology">psychology</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant/40">NODE_0x2B</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-xs group-hover:text-secondary transition-colors">AWS Generative AI</h3>
+<p class="font-terminal-sm text-terminal-sm text-on-surface-variant/70">Deep learning specialization for LLM deployment and fine-tuning.</p>
+</div>
+<div class="certification-card group relative p-md rounded-xl bg-surface-container-low/40 backdrop-blur-xl border border-white/5 hover:border-tertiary/50 transition-all duration-500 cursor-pointer overflow-hidden neon-border">
+<div class="scanline"></div>
+<div class="flex justify-between items-start mb-base">
+<span class="material-symbols-outlined text-tertiary text-3xl glow-sm" data-icon="memory">memory</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant/40">NODE_0x3C</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-xs group-hover:text-tertiary transition-colors">AWS ML Foundations</h3>
+<p class="font-terminal-sm text-terminal-sm text-on-surface-variant/70">Core algorithms and data science lifecycle on AWS ecosystem.</p>
+</div>
+<div class="certification-card group relative p-md rounded-xl bg-surface-container-low/40 backdrop-blur-xl border border-white/5 hover:border-primary/50 transition-all duration-500 cursor-pointer overflow-hidden neon-border">
+<div class="scanline"></div>
+<div class="flex justify-between items-start mb-base">
+<span class="material-symbols-outlined text-primary text-3xl glow-sm" data-icon="cloud">cloud</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant/40">NODE_0x4D</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-xs group-hover:text-primary transition-colors">AWS Cloud 101</h3>
+<p class="font-terminal-sm text-terminal-sm text-on-surface-variant/70">Global infrastructure, security compliance, and cost management.</p>
+</div>
+<div class="certification-card group relative p-md rounded-xl bg-surface-container-low/40 backdrop-blur-xl border border-white/5 hover:border-secondary/50 transition-all duration-500 cursor-pointer overflow-hidden neon-border">
+<div class="scanline"></div>
+<div class="flex justify-between items-start mb-base">
+<span class="material-symbols-outlined text-secondary text-3xl glow-sm" data-icon="bolt">bolt</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant/40">NODE_0x5E</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-xs group-hover:text-secondary transition-colors">LangChain &amp; Hugging Face</h3>
+<p class="font-terminal-sm text-terminal-sm text-on-surface-variant/70">Complex agent architectures and transformer-based model integration.</p>
+</div>
+<div class="certification-card group relative p-md rounded-xl bg-surface-container-low/40 backdrop-blur-xl border border-white/5 hover:border-tertiary/50 transition-all duration-500 cursor-pointer overflow-hidden neon-border">
+<div class="scanline"></div>
+<div class="flex justify-between items-start mb-base">
+<span class="material-symbols-outlined text-tertiary text-3xl glow-sm" data-icon="developer_board">developer_board</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant/40">NODE_0x6F</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-xs group-hover:text-tertiary transition-colors">DevOps with AI</h3>
+<p class="font-terminal-sm text-terminal-sm text-on-surface-variant/70">CI/CD automation utilizing AI-driven optimization techniques.</p>
+</div>
+<div class="certification-card group relative p-md rounded-xl bg-surface-container-low/40 backdrop-blur-xl border border-white/5 hover:border-primary/50 transition-all duration-500 cursor-pointer overflow-hidden neon-border">
+<div class="scanline"></div>
+<div class="flex justify-between items-start mb-base">
+<span class="material-symbols-outlined text-primary text-3xl glow-sm" data-icon="security">security</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant/40">NODE_0x7G</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-xs group-hover:text-primary transition-colors">Cisco CCNA Cyber Ops</h3>
+<p class="font-terminal-sm text-terminal-sm text-on-surface-variant/70">Security monitoring, incident response, and forensic analysis.</p>
+</div>
+<div class="certification-card group relative p-md rounded-xl bg-surface-container-low/40 backdrop-blur-xl border border-white/5 hover:border-secondary/50 transition-all duration-500 cursor-pointer overflow-hidden neon-border">
+<div class="scanline"></div>
+<div class="flex justify-between items-start mb-base">
+<span class="material-symbols-outlined text-secondary text-3xl glow-sm" data-icon="sync_alt">sync_alt</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant/40">NODE_0x8H</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-xs group-hover:text-secondary transition-colors">Postman Expert</h3>
+<p class="font-terminal-sm text-terminal-sm text-on-surface-variant/70">Advanced API testing, documentation, and lifecycle management.</p>
+</div>
+</div>
+</section>
+<!-- Section 2: GitHub Intelligence Dashboard -->
+<section class="space-y-lg" id="intelligence">
+<div class="flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-secondary pulse-node relative"></span>
+<h2 class="font-headline-lg text-headline-lg">CORE_INTEL_DASHBOARD</h2>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Contribution Graph (Simulated) -->
+<div class="lg:col-span-8 p-lg rounded-xl glass-panel relative overflow-hidden group">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-terminal-sm text-terminal-sm text-secondary">SUBMISSION_HISTORY_2024</h3>
+<div class="flex gap-2">
+<div class="w-3 h-3 rounded-sm bg-surface-container-highest"></div>
+<div class="w-3 h-3 rounded-sm bg-primary/20"></div>
+<div class="w-3 h-3 rounded-sm bg-primary/50"></div>
+<div class="w-3 h-3 rounded-sm bg-primary"></div>
+</div>
+</div>
+<div class="grid grid-cols-24 grid-rows-7 gap-1 h-32">
+<!-- Simplified Grid Visualization -->
+<script>
+                            for(let i=0; i<168; i++){
+                                const opacity = Math.random() > 0.5 ? (Math.random() > 0.5 ? 'bg-primary' : 'bg-primary/40') : 'bg-surface-container-highest';
+                                document.write(`<div class="w-full h-full rounded-sm ${opacity} hover:scale-125 transition-transform"></div>`);
+                            }
+                        </script>
+</div>
+<div class="mt-md flex justify-between font-terminal-sm text-[12px] text-on-surface-variant/50">
+<span>342 Commits in the last year</span>
+<span>Longest Streak: 21 Days</span>
+</div>
+</div>
+<!-- Stats -->
+<div class="lg:col-span-4 grid grid-cols-1 gap-gutter">
+<div class="p-md rounded-xl glass-panel flex items-center justify-between group hover:bg-white/5 transition-all">
+<div>
+<p class="font-label-caps text-on-surface-variant/60">REPOSITORIES</p>
+<p class="font-display-lg text-4xl text-primary font-bold">42</p>
+</div>
+<span class="material-symbols-outlined text-4xl text-primary/30 group-hover:scale-110 transition-transform" data-icon="folder_special">folder_special</span>
+</div>
+<div class="p-md rounded-xl glass-panel flex items-center justify-between group hover:bg-white/5 transition-all">
+<div>
+<p class="font-label-caps text-on-surface-variant/60">CONTRIBUTIONS</p>
+<p class="font-display-lg text-4xl text-secondary font-bold">1.2K</p>
+</div>
+<span class="material-symbols-outlined text-4xl text-secondary/30 group-hover:scale-110 transition-transform" data-icon="query_stats">query_stats</span>
+</div>
+</div>
+</div>
+<!-- Repository Analytics (Bento) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="p-lg rounded-xl glass-panel space-y-md">
+<div class="w-full h-32 bg-surface-container-highest/50 rounded-lg overflow-hidden relative">
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-50"></div>
+<img alt="Project Visual" class="w-full h-full object-cover mix-blend-overlay" data-alt="Abstract digital representation of a neural network with glowing nodes and interconnecting cyan lines on a deep black background, futuristic data visualization style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwOoHsuiCXGgRJR9yT2eIE5V4lEbSMsvL407roLm99UR5Bq7xcVt-allNkW-jz6pSDHJYrJ1cXUNpG-Es3WWWFBjfC7y4QBfO1InmNSGUcAk7AckBmwZ_B_SXWwRRR-dzAG4Tx22Knpk7zfEm-LXU1Rk3cRZvGyOIiBohs467xuS9k_0ZsXe2VcLrv8IwfCjj1F3M4dw3MPAQfy-vl86jLzVX1PzP4mlUtbRzJcRWzimitNo7U58_m-x5axeUsEqL8AgGV6aJeEAs"/>
+</div>
+<h4 class="font-headline-md text-primary">NEURAL_MESH_v1</h4>
+<p class="font-terminal-sm text-on-surface-variant/70">Distributed AI training orchestrator built on Kubernetes and PyTorch.</p>
+<div class="flex gap-4 font-label-caps text-[10px] text-tertiary">
+<span>#PYTHON</span> <span>#DOCKER</span> <span>#MLOPS</span>
+</div>
+</div>
+<div class="p-lg rounded-xl glass-panel space-y-md">
+<div class="w-full h-32 bg-surface-container-highest/50 rounded-lg overflow-hidden relative">
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-50"></div>
+<img alt="Project Visual" class="w-full h-full object-cover mix-blend-overlay" data-alt="Stylized cyber security shield icon formed by hundreds of floating digital binary digits, glowing with a soft neon violet light in a high-tech dark environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQzj_Snn6m7F19We6MzT5dCT_QOL2b5gdl1GRaP8XGD-ZvJfWsdL1FFDY4IeQjBBY2cgwtYVYFXX3PDu4WTDo7w4YBygENxOUOUbz0QF-hZozbMol1XfhLtDn48HehRRvewBdxFc2-znr5ev-TDeXX-cGFlEwhPt_O1a7t-G-1hn_F7l1ki0rogic8RK3ZZuupWZiqawJEn0F6G6KMXgrO8KwOcogT74KkhFFoC5n6e2B9fq2F-w73uj9uU_tV1ZytYfhbadm-9Bg"/>
+</div>
+<h4 class="font-headline-md text-secondary">SENTINEL_GATE</h4>
+<p class="font-terminal-sm text-on-surface-variant/70">Anomaly detection engine for identifying zero-day threats in real-time traffic.</p>
+<div class="flex gap-4 font-label-caps text-[10px] text-tertiary">
+<span>#GO</span> <span>#EBFP</span> <span>#SECURITY</span>
+</div>
+</div>
+<div class="p-lg rounded-xl glass-panel space-y-md">
+<div class="w-full h-32 bg-surface-container-highest/50 rounded-lg overflow-hidden relative">
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-50"></div>
+<img alt="Project Visual" class="w-full h-full object-cover mix-blend-overlay" data-alt="Intricate glowing network map representing API connections and data flow, using a vibrant color palette of teal and deep blue with light-trails moving between nodes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBN7OsOwHrj2cgZdtIGfeUlGIJ4F_nsdrmdHg-VTqIUSHPplOh-FJHV_NufB-4flxHU0GVNdAAPLudOy9hSoH3kXg4EQcfGWEG-BNtGPSnmve2xlJhUuIG86tub8iCAzmPmoB5jySF94maXmj4wXdvdXuGjQaqncx93sxA2x4vUmPMbAb0VV--SyF7U-Y2Yj75Wc56vofHtE-mSnbOT_K0Fe5QmLgiMzCMPCyDrPZz3wU8VCuuRhNOIwEYsFNgJXQcmPU8b3NYJbJg"/>
+</div>
+<h4 class="font-headline-md text-tertiary">GEN_FLOW_API</h4>
+<p class="font-terminal-sm text-on-surface-variant/70">Universal LLM adapter for seamless switching between provider backends.</p>
+<div class="flex gap-4 font-label-caps text-[10px] text-tertiary">
+<span>#TYPESCRIPT</span> <span>#FASTAPI</span> <span>#LLM</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Contact Section (Secure Terminal) -->
+<section class="space-y-lg" id="contact">
+<div class="flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-primary pulse-node relative"></span>
+<h2 class="font-headline-lg text-headline-lg">SECURE_COMM_TERMINAL</h2>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-xl">
+<!-- Terminal Form -->
+<div class="p-lg rounded-xl bg-surface-container-lowest border border-white/10 shadow-2xl relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-8 bg-surface-container-highest/50 flex items-center px-4 gap-2">
+<div class="w-3 h-3 rounded-full bg-error/50"></div>
+<div class="w-3 h-3 rounded-full bg-secondary/50"></div>
+<div class="w-3 h-3 rounded-full bg-tertiary/50"></div>
+<span class="ml-auto font-terminal-sm text-[10px] text-on-surface-variant/50">ENCRYPTION: AES-256-GCM</span>
+</div>
+<form class="mt-8 space-y-md" id="contactForm">
+<div class="space-y-xs">
+<label class="font-terminal-sm text-tertiary-fixed-dim block">usr@ai-sec:~$ IDENTIFY_SELF</label>
+<input class="w-full bg-transparent border-b border-white/10 focus:border-primary outline-none py-2 font-terminal-sm text-primary placeholder:text-outline/40" placeholder="Enter full name..." type="text"/>
+</div>
+<div class="space-y-xs">
+<label class="font-terminal-sm text-tertiary-fixed-dim block">usr@ai-sec:~$ CONTACT_PROTOCOL</label>
+<input class="w-full bg-transparent border-b border-white/10 focus:border-primary outline-none py-2 font-terminal-sm text-primary placeholder:text-outline/40" placeholder="Enter secure email..." type="email"/>
+</div>
+<div class="space-y-xs">
+<label class="font-terminal-sm text-tertiary-fixed-dim block">usr@ai-sec:~$ DATA_PAYLOAD</label>
+<textarea class="w-full bg-transparent border-b border-white/10 focus:border-primary outline-none py-2 font-terminal-sm text-primary placeholder:text-outline/40 resize-none" placeholder="Transmit your message..." rows="4"></textarea>
+</div>
+<button class="w-full btn-holographic relative py-4 border border-primary/50 text-primary font-label-caps tracking-[0.2em] group overflow-hidden rounded-lg" type="submit">
+<div class="scanline"></div>
+<span class="relative z-10">INITIATE_TRANSMISSION</span>
+<div class="absolute inset-0 bg-primary/5 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+</button>
+</form>
+</div>
+<!-- Contact Details & Assistant -->
+<div class="space-y-lg">
+<!-- AI Chatbot Mini UI -->
+<div class="p-md rounded-xl glass-panel border border-tertiary/20">
+<div class="flex items-center gap-md mb-md">
+<div class="w-10 h-10 rounded-full bg-tertiary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary" data-icon="smart_toy">smart_toy</span>
+</div>
+<div>
+<h4 class="font-headline-md text-tertiary">CORE_ASSISTANT</h4>
+<p class="font-terminal-sm text-[12px] text-tertiary/50">Online • Low Latency</p>
+</div>
+</div>
+<div class="bg-black/20 p-md rounded-lg mb-md">
+<p class="font-terminal-sm text-on-surface-variant">
+<span class="text-tertiary">&gt;</span> Salutations. I am Rishu's neural liaison. Would you like to schedule a virtual synchronization or explore specific technical clusters? <span class="terminal-cursor"></span>
+</p>
+</div>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-1 rounded-full border border-tertiary/30 font-terminal-sm text-[12px] hover:bg-tertiary/10 transition-colors">Schedule Sync</button>
+<button class="px-4 py-1 rounded-full border border-tertiary/30 font-terminal-sm text-[12px] hover:bg-tertiary/10 transition-colors">Project Deep-dive</button>
+</div>
+</div>
+<!-- Direct Links -->
+<div class="grid grid-cols-2 gap-gutter">
+<a class="p-md rounded-xl glass-panel flex flex-col items-center justify-center text-center gap-2 group hover:scale-105 transition-transform" href="mailto:rishusingh2902@gmail.com">
+<span class="material-symbols-outlined text-3xl text-secondary" data-icon="alternate_email">alternate_email</span>
+<span class="font-label-caps text-on-surface-variant/60">EMAIL</span>
+<span class="font-terminal-sm text-[12px]">rishusingh2902@gmail.com</span>
+</a>
+<a class="p-md rounded-xl glass-panel flex flex-col items-center justify-center text-center gap-2 group hover:scale-105 transition-transform" href="https://github.com/rishu-architect" target="_blank" rel="noopener noreferrer">
+<span class="material-symbols-outlined text-3xl text-secondary" data-icon="code">code</span>
+<span class="font-label-caps text-on-surface-variant/60">GITHUB</span>
+<span class="font-terminal-sm text-[12px]">/rishu-architect</span>
+</a>
+<a class="p-md rounded-xl glass-panel flex flex-col items-center justify-center text-center gap-2 group hover:scale-105 transition-transform" href="https://linkedin.com/in/rishusingh-ai" target="_blank" rel="noopener noreferrer">
+<span class="material-symbols-outlined text-3xl text-secondary" data-icon="share">share</span>
+<span class="font-label-caps text-on-surface-variant/60">LINKEDIN</span>
+<span class="font-terminal-sm text-[12px]">/in/rishusingh-ai</span>
+</a>
+<a class="p-md rounded-xl glass-panel flex flex-col items-center justify-center text-center gap-2 group hover:scale-105 transition-transform" href="tel:6392019516">
+<span class="material-symbols-outlined text-3xl text-secondary" data-icon="call">call</span>
+<span class="font-label-caps text-on-surface-variant/60">PHONE</span>
+<span class="font-terminal-sm text-[12px]">+91 63920 19516</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-white/10 mt-xl bg-surface-container-lowest/80 backdrop-blur-md flex flex-col md:flex-row justify-between items-center px-lg py-md gap-4">
+<div class="font-terminal-sm text-terminal-sm text-tertiary-fixed">© 2024 RISHU_SINGH // SECURE_ACCESS_GRANTED</div>
+<div class="flex gap-8">
+<a class="font-terminal-sm text-terminal-sm text-outline hover:text-tertiary-fixed-dim hover:glow-sm transition-all duration-200" href="#">GITHUB</a>
+<a class="font-terminal-sm text-terminal-sm text-outline hover:text-tertiary-fixed-dim hover:glow-sm transition-all duration-200" href="#">LINKEDIN</a>
+<a class="font-terminal-sm text-terminal-sm text-outline hover:text-tertiary-fixed-dim hover:glow-sm transition-all duration-200" href="#">TWITTER</a>
+</div>
+</footer>
+<!-- FAB -->
+<button class="fixed bottom-8 right-8 w-14 h-14 rounded-full bg-primary text-on-primary-container flex items-center justify-center shadow-xl shadow-primary/20 z-50 hover:scale-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
+</button>
+<!-- Modal Backdrop (Hidden) -->
+<div class="fixed inset-0 bg-background/80 backdrop-blur-sm z-[60] hidden flex items-center justify-center p-md" id="modal-backdrop">
+<!-- Modal Content (Example) -->
+<div class="hidden max-w-2xl w-full p-lg glass-panel rounded-2xl relative" id="modal-cert-1">
+<button class="absolute top-4 right-4 text-on-surface-variant hover:text-primary transition-colors" onclick="toggleModal('modal-cert-1')">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+<div class="space-y-md">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-6xl text-primary" data-icon="api">api</span>
+<div>
+<h2 class="font-headline-lg text-primary">Oracle OCI AI</h2>
+<p class="font-terminal-sm text-tertiary-fixed-dim">Credential ID: OCI-AI-992384-X</p>
+</div>
+</div>
+<div class="h-[1px] w-full bg-white/10"></div>
+<div class="grid grid-cols-2 gap-md font-terminal-sm text-on-surface-variant/80">
+<div>
+<p class="font-label-caps text-on-surface-variant/40 mb-1">DATE_ISSUED</p>
+<p>OCTOBER 2023</p>
+</div>
+<div>
+<p class="font-label-caps text-on-surface-variant/40 mb-1">STATUS</p>
+<p class="text-tertiary">VERIFIED_SECURE</p>
+</div>
+</div>
+<p class="font-body-md text-on-surface-variant">Validation of advanced skills in implementing generative AI solutions using OCI infrastructure, including model fine-tuning, vector database integration, and high-performance computing clusters.</p>
+<div class="flex gap-md">
+<button class="flex-1 py-3 rounded-lg border border-primary/50 text-primary font-label-caps hover:bg-primary/10 transition-all">VIEW_CERTIFICATE</button>
+<button class="flex-1 py-3 rounded-lg bg-primary text-on-primary-container font-label-caps">SHARE_NODE</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+        function toggleModal(id) {
+            const backdrop = document.getElementById('modal-backdrop');
+            const modal = document.getElementById(id);
+            if (modal) {
+                backdrop.classList.toggle('hidden');
+                modal.classList.toggle('hidden');
+            }
+        }
+
+        // Handle form submission animation
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerText;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin" data-icon="autorenew">autorenew</span> ENCRYPTING_PAYLOAD...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerHTML = '<span class="material-symbols-outlined" data-icon="done_all">done_all</span> TRANSMISSION_COMPLETE';
+                btn.classList.add('bg-tertiary/20', 'text-tertiary', 'border-tertiary');
+                btn.classList.remove('text-primary', 'border-primary/50');
+            }, 2000);
+        });
+
+        // Add some floating background particles
+        function createParticles() {
+            const container = document.body;
+            for(let i=0; i<20; i++) {
+                const p = document.createElement('div');
+                p.className = 'fixed bg-primary/20 rounded-full blur-xl -z-20 pointer-events-none';
+                const size = Math.random() * 200 + 100;
+                p.style.width = `${size}px`;
+                p.style.height = `${size}px`;
+                p.style.left = `${Math.random() * 100}vw`;
+                p.style.top = `${Math.random() * 100}vh`;
+                p.style.animation = `float ${Math.random() * 10 + 10}s infinite alternate ease-in-out`;
+                container.appendChild(p);
+            }
+        }
+        
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                0% { transform: translate(0, 0) scale(1); }
+                100% { transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) scale(1.2); }
+            }
+        `;
+        document.head.appendChild(style);
+        createParticles();
+    </script>
+</body></html>
